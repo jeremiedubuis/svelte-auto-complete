@@ -1,0 +1,33 @@
+{
+  "name": "svelte-auto-complete",
+  "version": "0.0.0",
+  "description": "A svelte autocomplete component",
+  "main": "index.js",
+  "svelte": "src/index.js",
+  "module": "index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremiedubuis/svelte-auto-complete.git"
+  },
+  "keywords": [
+    "svelte",
+    "autocomplete"
+  ],
+  "author": "Jérémie Dubuis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremiedubuis/svelte-auto-complete/issues"
+  },
+  "homepage": "https://github.com/jeremiedubuis/svelte-auto-complete#readme",
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf public src rollup.* package-lock.json",
+    "prepublishOnly": "npm run build && npm run clean"
+  },
+  "devDependencies": {
+    "rollup": "^1.27.14",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "svelte": "^3.16.7"
+  }
+}
