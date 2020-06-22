@@ -20,7 +20,7 @@
 
     const onArrowUp = () => focus(focused-1);
     const onArrowDown = () => focus(focused+1);
-    const onEnter = () => setValue(getOptionValue(filteredOptions[focused]))
+    const onEnter = () => setValue(getOptionText(filteredOptions[focused]))
 
     onMount(() => {
         if (typeof document !== 'undefined') document.body.appendChild(options);
