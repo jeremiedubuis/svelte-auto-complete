@@ -7,7 +7,6 @@ const targetHasExcludedClass = (target, excludedClasses) => {
 
 
 const onClickFactory = (parent, callback, excludedClasses) => e => {
-    console.log(e.target)
     if (!parent || !parent.contains(e.target) && !targetHasExcludedClass(e.target, excludedClasses)) {
         if (typeof callback === 'function') {
             callback(e);
