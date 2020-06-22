@@ -1,5 +1,5 @@
 {
-  "name": "svelte-auto-complete",
+  "name": "svelte-auto-completion",
   "version": "0.0.0",
   "description": "A svelte autocomplete component",
   "files": ["index.js", "index.mjs"],
