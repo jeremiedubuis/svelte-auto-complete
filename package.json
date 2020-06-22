@@ -2,6 +2,7 @@
   "name": "svelte-auto-complete",
   "version": "0.0.0",
   "description": "A svelte autocomplete component",
+  "files": ["index.js", "index.mjs"],
   "main": "index.js",
   "svelte": "src/index.js",
   "module": "index.mjs",
