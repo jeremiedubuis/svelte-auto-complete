@@ -23,7 +23,7 @@
     const onEnter = () => setValue(getOptionValue(filteredOptions[focused]))
 
     onMount(() => {
-        document.body.appendChild(options);
+        if (typeof document !== 'undefined') document.body.appendChild(options);
         const removeListeners = [onClickOutside(options, close, [libClassName])];
         removeListeners.push(onKeyDown('ArrowUp', onArrowUp));
         removeListeners.push(onKeyDown('ArrowDown', onArrowDown));
