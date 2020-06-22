@@ -9,12 +9,15 @@
     export let matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase());
     export let options;
     export let value = "";
+    export let minLength = 0;
 
-    let filteredOptions;
+    let filteredOptions = [];
     let isToggled = false;
     let input;
 
-    const onBlur = e => {
+    filter();
+
+    const close = e => {
         isToggled = false;
     };
 
@@ -22,9 +25,19 @@
         isToggled = true;
     };
 
+
+    const setValue = _value => {
+        value = _value;
+        filter();
+    };
+
+    function filter() {
+        if (value.length < minLength) filteredOptions = [];
+        else filteredOptions = options.filter((o) => matchingFunction(value, getOptionValue(o)));
+    }
+
     const onInput = e => {
-        value = e.target.value;
-        filteredOptions = options.filter((o) => matchingFunction(value, getOptionValue(o)));
+        setValue(e.target.value);
     };
 
 </script>
@@ -32,14 +45,13 @@
 <input class="{libClassName}"
        bind:this={input}
        type="text"
-       on:blur={onBlur}
        on:focus={onFocus}
        on:input={onInput}
        bind:value/>
 
 {#if isToggled}
     {#if filteredOptions.length}
-    <AutoCompleteOptions bind:filteredOptions bind:getOptionText bind:input bind:direction>
+    <AutoCompleteOptions bind:filteredOptions bind:getOptionText bind:input bind:direction setValue={setValue} getOptionValue={getOptionValue} close={close}>
         <slot name="option" />
     </AutoCompleteOptions>
     {:else}

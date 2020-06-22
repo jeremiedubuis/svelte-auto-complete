@@ -2,18 +2,27 @@
     import { onMount } from 'svelte';
     import { libClassName } from './helpers/configuration';
     import { DIRECTION } from './helpers/constants';
+    import onClickOutside from './helpers/onClickOutside';
 
     export let direction;
     export let filteredOptions;
     export let getOptionText;
     export let input;
+    export let setValue;
+    export let getOptionValue;
+    export let close;
 
     let options;
 
     onMount(() => {
         document.body.appendChild(options);
-        return () => document.body.removeChild(options);
+        return onClickOutside(options, close, [libClassName]);
     });
+
+    const onClick = o => {
+        setValue(getOptionValue(o));
+        close();
+    }
 
 
     $: getOptionsStyle = () => {
@@ -28,9 +37,11 @@
     <ul>
         {#each filteredOptions as o}
             <li>
-                <slot name="option" option={o} text={getOptionText(o)}>
-                    {getOptionText(o)}
-                </slot>
+                <button on:click={() => onClick(o)}>
+                    <slot name="option" option={o} text={getOptionText(o)}>
+                        {getOptionText(o)}
+                    </slot>
+                </button>
             </li>
         {/each}
     </ul>
