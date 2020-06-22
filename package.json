@@ -4,7 +4,8 @@
   "description": "A svelte autocomplete component",
   "files": [
     "index.js",
-    "index.mjs"
+    "index.mjs",
+    "src/*"
   ],
   "main": "index.js",
   "svelte": "src/index.js",
