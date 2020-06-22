@@ -23,8 +23,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c rollup.example.js -w",
-    "clean": "rm -rf public src rollup.* package-lock.json",
-    "prepublishOnly": "npm run build && npm run clean",
+    "prepublishOnly": "npm run build",
     "sirv": "sirv public"
   },
   "devDependencies": {
