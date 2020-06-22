@@ -43,7 +43,7 @@
         const rect = input.getBoundingClientRect();
         const left = rect.left + (direction[0] === DIRECTION.RIGHT ? rect.width : 0);
         const top = rect.top + (direction[1] === DIRECTION.TOP ? -options.offsetHeight : rect.height);
-        return `position: absolute; left=${left}px; top:${top}px;`
+        return `position: absolute; left:${left}px; top:${top}px;`
     }
 </script>
 

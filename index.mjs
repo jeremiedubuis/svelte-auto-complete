@@ -85,7 +85,14 @@ const AutoComplete = create_ssr_component(($$result, $$props, $$bindings, $$slot
 	let { matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()) } = $$props;
 	let { options } = $$props;
 	let { value = "" } = $$props;
+	let { minLength = 0 } = $$props;
+	let filteredOptions = [];
 	let input;
+	filter();
+
+	function filter() {
+		if (value.length < minLength) filteredOptions = []; else filteredOptions = options.filter(o => matchingFunction(value, getOptionValue(o)) && value !== getOptionValue(o));
+	}
 
 	if ($$props.direction === void 0 && $$bindings.direction && direction !== void 0) $$bindings.direction(direction);
 	if ($$props.getOptionText === void 0 && $$bindings.getOptionText && getOptionText !== void 0) $$bindings.getOptionText(getOptionText);
@@ -93,6 +100,7 @@ const AutoComplete = create_ssr_component(($$result, $$props, $$bindings, $$slot
 	if ($$props.matchingFunction === void 0 && $$bindings.matchingFunction && matchingFunction !== void 0) $$bindings.matchingFunction(matchingFunction);
 	if ($$props.options === void 0 && $$bindings.options && options !== void 0) $$bindings.options(options);
 	if ($$props.value === void 0 && $$bindings.value && value !== void 0) $$bindings.value(value);
+	if ($$props.minLength === void 0 && $$bindings.minLength && minLength !== void 0) $$bindings.minLength(minLength);
 	let $$settled;
 	let $$rendered;
 
