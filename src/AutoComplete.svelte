@@ -33,7 +33,7 @@
 
     function filter() {
         if (value.length < minLength) filteredOptions = [];
-        else filteredOptions = options.filter((o) => matchingFunction(value, getOptionValue(o)) && value !== getOptionValue(o));
+        else filteredOptions = options.filter((o) => matchingFunction(value, getOptionText(o)) && value !== getOptionValue(o));
     }
 
     const onInput = e => {

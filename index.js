@@ -97,7 +97,7 @@
     	filter();
 
     	function filter() {
-    		if (value.length < minLength) filteredOptions = []; else filteredOptions = options.filter(o => matchingFunction(value, getOptionValue(o)) && value !== getOptionValue(o));
+    		if (value.length < minLength) filteredOptions = []; else filteredOptions = options.filter(o => matchingFunction(value, getOptionText(o)) && value !== getOptionValue(o));
     	}
 
     	if ($$props.direction === void 0 && $$bindings.direction && direction !== void 0) $$bindings.direction(direction);
