@@ -1,21 +1,22 @@
 <script>
+    import { onMount } from 'svelte';
     import {libClassName} from './helpers/configuration';
     import AutoCompleteOptions from "./AutoCompleteOptions.svelte";
     import { DIRECTION } from './helpers/constants';
-
-    export let direction = [DIRECTION.LEFT, DIRECTION.BOTTOM];
-    export let getOptionText = o => o;
-    export let getOptionValue = o => o;
-    export let matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase());
-    export let options;
-    export let value = "";
-    export let minLength = 0;
+    $: ({
+        direction = [DIRECTION.LEFT, DIRECTION.BOTTOM],
+        getOptionText = o => o,
+        getOptionValue = o => o,
+        matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()),
+        options,
+        value = "",
+        minLength = 0,
+        ...nativeProps
+    } = $$props);
 
     let filteredOptions = [];
     let isToggled = false;
     let input;
-
-    filter();
 
     const close = e => {
         isToggled = false;
@@ -40,6 +41,8 @@
         setValue(e.target.value);
     };
 
+    onMount(() => filter());
+
 </script>
 
 <input class="{libClassName}"
@@ -47,6 +50,7 @@
        type="text"
        on:focus={onFocus}
        on:input={onInput}
+        {...nativeProps}
        bind:value/>
 
 {#if isToggled}

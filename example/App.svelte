@@ -9,5 +9,5 @@
 </style>
 
 <main>
-    <AutoComplete options={['albert', 'bernard']} />
+    <AutoComplete options={['albert', 'bernard']} style="border: 1px solid red;"/>
 </main>
