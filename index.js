@@ -167,7 +167,7 @@
 
     	do {
     		$$settled = true;
-    		let { direction = [DIRECTION.LEFT, DIRECTION.BOTTOM], getOptionText = o => o, getOptionValue = o => o, matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()), options, value: providedValue, minLength = 0, ...nativeProps } = $$props;
+    		let { direction = [DIRECTION.LEFT, DIRECTION.BOTTOM], getOptionText = o => o, getOptionValue = o => o, matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()), options, value: providedValue, minLength = 0, onBlur, onFocus, onInput, ...nativeProps } = $$props;
 
     		$$rendered = `<input${spread([{ class: escape(libClassName) }, { type: "text" }, nativeProps])}${add_attribute("this", input, 1)}${add_attribute("value", value, 1)}>
 

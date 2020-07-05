@@ -11,6 +11,9 @@
         options,
         value: providedValue,
         minLength = 0,
+        onBlur,
+        onFocus,
+        onInput,
         ...nativeProps
     } = $$props);
 
@@ -24,8 +27,13 @@
         isToggled = false;
     };
 
-    const onFocus = e => {
+    const _onFocus = e => {
         isToggled = true;
+        if (typeof onFocus === 'function') onFocus(e);
+    };
+
+    const _onBlur = e => {
+        if (typeof onBlur === 'function') onBlur(e);
     };
 
 
@@ -39,8 +47,9 @@
         else filteredOptions = options.filter((o) => matchingFunction(value, getOptionText(o)) && value !== getOptionValue(o));
     }
 
-    const onInput = e => {
+    const _onInput = e => {
         setValue(e.target.value);
+        if (typeof onInput === 'function') onInput(e);
     };
 
     onMount(() => filter());
@@ -50,8 +59,9 @@
 <input class="{libClassName}"
        bind:this={input}
        type="text"
-       on:focus={onFocus}
-       on:input={onInput}
+       on:focus={_onFocus}
+       on:input={_onInput}
+       on:blur={_onBlur}
         {...nativeProps}
        bind:value/>
 
