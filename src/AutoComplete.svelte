@@ -9,10 +9,12 @@
         getOptionValue = o => o,
         matchingFunction = (value, optionValue) => optionValue.toLowerCase().startsWith(value.toLowerCase()),
         options,
-        value = "",
+        value: providedValue,
         minLength = 0,
         ...nativeProps
     } = $$props);
+
+    export let value = '';
 
     let filteredOptions = [];
     let isToggled = false;
