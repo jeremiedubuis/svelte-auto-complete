@@ -5,8 +5,8 @@
     "../../App.svelte"
   ],
   "sourcesContent": [
-    "<script>\n    import AutoComplete from '../src/AutoComplete.svelte';\n</script>\n\n<style>\n    :global(button:focus) {\n        border: 1px solid;\n    }\n</style>\n\n<main>\n    <AutoComplete options={['albert', 'bernard']} style=\"border: 1px solid red;\"/>\n</main>\n"
+    "<script>\n    import AutoComplete from '../src/AutoComplete.svelte';\n    let v = 'albert';\n    let v2 = 'Albert';\n</script>\n\n<style>\n    :global(button:focus) {\n        border: 1px solid;\n    }\n</style>\n\n<main>\n    <AutoComplete bind:value={v} options={['albert', 'bernard']} style=\"border: 1px solid red;\"/>\n    <AutoComplete\n      bind:value={v2}\n      getOptionText={({ label}) => label}\n      getOptionValue={({ value }) => value}\n      options={[{ label: 'Albert', value: 'albert'}, { label: 'Bernard', value: 'bernard' }]}\n      style=\"border: 1px solid red;\" />\n</main>\n"
   ],
   "names": [],
-  "mappings": "AAKY,YAAY,AAAE,CAAC,AACnB,MAAM,CAAE,GAAG,CAAC,KAAK,AACrB,CAAC"
+  "mappings": "AAOY,YAAY,AAAE,CAAC,AACnB,MAAM,CAAE,GAAG,CAAC,KAAK,AACrB,CAAC"
 }
