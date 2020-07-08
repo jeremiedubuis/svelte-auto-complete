@@ -34,7 +34,7 @@
     });
 
     const onClick = o => {
-        setValue(getOptionValue(o));
+        setValue(getOptionText(o));
         close();
     }
 
